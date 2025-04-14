@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documents</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #2c2c2c; /* 少し明るいグレー */
+      color: #f5f5f5; /* 柔らかい白 */
+      overflow: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #3a3a3a; /* 明るいダークグレー */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid #555555; /* 少し明るいボーダー */
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #ffffff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #3a3a3a;
+      padding: 15px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav button {
+      background: none;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin: 0 15px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    nav button:hover {
+      color: #3a3a3a;
+      background: #ffffff;
+    }
+
+    .content {
+      padding: 40px 20px;
+      text-align: center;
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    .skills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .skill {
+      background: #4a4a4a; /* 少し明るい背景 */
+      padding: 30px;
+      border-radius: 15px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .skill:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .details-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: #4a4a4a; /* 明るいダークグレー */
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      color: #f5f5f5;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .details-box h3 {
+      margin-top: 0;
+      color: #ffffff;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>履歴書 & 職務経歴書</h1>
+  </header>
+
+  <nav>
+    <button onclick="showTab('home')">Home</button>
+    <button onclick="showTab('skills')">Skill</button>
+    <button onclick="showTab('experiences')">Experiences</button>
+    <button onclick="showTab('projects')">Projects</button>
+  </nav>
+
+  <div id="home" class="content active">
+    <h2>Welcome to My Portfolio</h2>
+    <p>スキル、プロジェクト、職務経歴</p>
+  </div>
+
+  <div id="skills" class="content">
+    <h2>Skill</h2>
+    <div class="skills">
+      <div class="skill" onclick="showDetails('Python', 'Python')">
+        <h3>Python1</h3>
+      </div>
+      <div class="skill" onclick="showDetails('C/C++', 'C/C++')">
+        <h3>C/C++2</h3>
+      </div>
+      <div class="skill" onclick="showDetails('PHP', 'PHP')">
+        <h3>PHP3</h3>
+      </div>
+      <div class="skill" onclick="showDetails('AWS', 'AWS')">
+        <h3>AWS4</h3>
+      </div>
+    </div>
+    <div id="details-box" class="details-box" style="display: none;">
+      <h3 id="details-title"></h3>
+      <p id="details-description"></p>
+    </div>
+  </div>
+
+  <div id="experiences" class="content">
+    <h2>experiences</h2>
+    <p></p>
+  </div>
+  
+
+  <div id="projects" class="content">
+    <h2>Projects</h2>
+    <p></p>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const contents = document.querySelectorAll('.content');
+      contents.forEach(content => content.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function showDetails(title, description) {
+      const detailsBox = document.getElementById('details-box');
+      document.getElementById('details-title').innerText = title;
+      document.getElementById('details-description').innerText = description;
+      detailsBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
